@@ -17,7 +17,7 @@ Within your scene's generator function or methods of a class-based scene, you ca
 - In `makeScene2D(function* (view) { ... })`: Use `view.player`.
 - In a class extending `Scene` (or `Node`): Use `this.player`.
 
-```typescript
+```ts
 import { makeScene2D } from "@motion-canvas/2d";
 import { Player } from "@motion-canvas/core"; // For type annotation
 
@@ -89,7 +89,7 @@ The `Player` object exposes many of its properties as signals, allowing you to r
 
 **Using Player State Reactively:**
 
-```typescript
+```ts
 import { makeScene2D, Txt } from "@motion-canvas/2d";
 import { createRef } from "@motion-canvas/core";
 
@@ -159,7 +159,7 @@ The `Player` object provides methods to control the playback flow. Most of these
 
 **Example: Custom Play/Pause Control**
 
-```typescript
+```ts
 import { makeScene2D, Rect } from "@motion-canvas/2d";
 import { createRef, waitFor } from "@motion-canvas/core";
 
@@ -195,7 +195,7 @@ The `Player` emits various events that you can listen to for reacting to changes
 
   - Returns a `dispose` function to unsubscribe the listener.
 
-  ```typescript
+  ```ts
   const playListenerDispose = player.on("play", () => {
     console.log("Event: Player started playing!");
   });
@@ -234,7 +234,7 @@ The `Player` emits various events that you can listen to for reacting to changes
 - **Dispatching Custom Events: `player.dispatch(eventName: string, data?: any)`**
   You can dispatch your own custom events through the player, which can then be caught by `waitUntil(eventName)` or other `player.on(eventName)` listeners.
 
-  ```typescript
+  ```ts
   // In one part of your animation
   yield * waitFor(1);
   player.dispatch("myCustomMilestone", { achieved: true, value: 100 });
@@ -253,13 +253,13 @@ The `Player` emits various events that you can listen to for reacting to changes
 - **`player.logger: Logger`**:
   Access the player's instance of the `Logger` for consistent logging.
 
-  ```typescript
+  ```ts
   player.logger.info("This message comes from the player logger.");
   ```
 
 - **`player.debug` Tools:**
   The player might have debugging flags or methods. For example, the documentation shows patterns like:
-  ```typescript
+  ```ts
   // Toggling debug information display (if available)
   // player.debugFlags.showOrigins = !player.debugFlags.showOrigins();
   // The exact API for debug flags might be internal or evolve.
